@@ -7,7 +7,7 @@ from django.core.management import execute_from_command_line
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
-from datacenter.models import Passcard, Visit # noqa: E402
+from datacenter.models import Passcard, Visit, get_duration # noqa: E402
 
 if __name__ == '__main__':
     # Программируем здесь
@@ -29,15 +29,16 @@ if __name__ == '__main__':
 
 
     not_leaved = Visit.objects.filter(leaved_at=None)
+    print(not_leaved)
 
-    for person in not_leaved:
-        entered_time = django.utils.timezone.localtime(person.entered_at)
-        now_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
+    # for person in not_leaved:
+    #     entered_time = django.utils.timezone.localtime(person.entered_at)
+    #     now_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
 
-        time_spent = now_time - entered_time
+        # time_spent = now_time - entered_time
+        # print(person.passcard)
+        # print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
+        # print(f'Находится в хранилище:  \n {time_spent}')
 
-        print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
-        print(f'Находится в хранилище:  \n {time_spent}')
 
-
-    # execute_from_command_line('manage.py runserver 0.0.0.0:8000'.split())
+    execute_from_command_line('manage.py runserver 0.0.0.0:8000'.split())

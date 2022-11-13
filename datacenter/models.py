@@ -1,5 +1,7 @@
 from django.db import models
-
+import django
+from datetime import datetime
+import pytz
 
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
@@ -28,3 +30,15 @@ class Visit(models.Model):
                 if self.leaved_at else 'not leaved'
             )
         )
+
+def get_duration(visit):
+    entered_time = django.utils.timezone.localtime(visit.entered_at)
+    now_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
+    time_spent = now_time - entered_time
+
+    return time_spent.seconds
+
+def format_duration(duration):
+    hours = duration // 3600
+    minutes = round(duration % 3600 / 60)
+    return f'{hours} ч. {minutes} мин.'
