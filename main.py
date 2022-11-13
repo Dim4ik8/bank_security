@@ -15,3 +15,7 @@ if __name__ == '__main__':
 
     for card in cards:
         print(f'owner_name: {card.owner_name} \npasscode: {card.passcode} \ncreated_at: {card.created_at} \nis_active: {card.is_active}\n')
+
+    active_passcards = [card.owner_name for card in cards if card.is_active]
+    print(f'Активных пропусков: {len(active_passcards)}')
+
