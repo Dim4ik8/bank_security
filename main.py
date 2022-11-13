@@ -1,6 +1,7 @@
 import os
-
+from datetime import datetime
 import django
+import pytz
 
 from django.core.management import execute_from_command_line
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
@@ -28,8 +29,15 @@ if __name__ == '__main__':
 
 
     not_leaved = Visit.objects.filter(leaved_at=None)
-    print(not_leaved)
 
-    # b = django.utils.timezone.localtime(a)
+    for person in not_leaved:
+        entered_time = django.utils.timezone.localtime(person.entered_at)
+        now_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
+
+        time_spent = now_time - entered_time
+
+        print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
+        print(f'Находится в хранилище:  \n {time_spent}')
+
 
     # execute_from_command_line('manage.py runserver 0.0.0.0:8000'.split())
