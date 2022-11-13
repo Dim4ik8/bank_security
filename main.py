@@ -19,3 +19,5 @@ if __name__ == '__main__':
     active_passcards = [card.owner_name for card in cards if card.is_active]
     print(f'Активных пропусков: {len(active_passcards)}')
 
+    active_passcards_from_db = Passcard.objects.filter(is_active=True)
+    print(f'Активных пропусков: {len(active_passcards_from_db)}')
