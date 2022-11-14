@@ -4,10 +4,11 @@ import django
 import pytz
 
 from django.core.management import execute_from_command_line
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
 
-from datacenter.models import Passcard, Visit, get_duration, is_visit_long # noqa: E402
+from datacenter.models import Passcard, Visit, get_duration, is_visit_long  # noqa: E402
 
 if __name__ == '__main__':
     # Программируем здесь
@@ -25,12 +26,6 @@ if __name__ == '__main__':
     # active_passcards_from_db = Passcard.objects.filter(is_active=True)
     # print(f'Активных пропусков: {len(active_passcards_from_db)}')
 
-    visites = Visit.objects.all()
-    print(visites)
-    for visit in visites:
-        if is_visit_long(visit):
-            print('1')
-
     # not_leaved = Visit.objects.filter(leaved_at=None)
     # print(not_leaved)
 
@@ -38,11 +33,9 @@ if __name__ == '__main__':
     #     entered_time = django.utils.timezone.localtime(person.entered_at)
     #     now_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
 
-        # time_spent = now_time - entered_time
-        # print(person.passcard)
-        # print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
-        # print(f'Находится в хранилище:  \n {time_spent}')
+    # time_spent = now_time - entered_time
+    # print(person.passcard)
+    # print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
+    # print(f'Находится в хранилище:  \n {time_spent}')
 
-
-    # execute_from_command_line('manage.py runserver 0.0.0.0:8000'.split())
-
+    execute_from_command_line('manage.py runserver 0.0.0.0:8000'.split())

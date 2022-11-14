@@ -3,6 +3,7 @@ import django
 from datetime import datetime
 import pytz
 
+
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now=True)
@@ -31,6 +32,7 @@ class Visit(models.Model):
             )
         )
 
+
 def get_duration(visit):
     exit_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
 
@@ -43,11 +45,15 @@ def get_duration(visit):
 
     return time_spent.seconds
 
+
 def format_duration(duration):
     hours = duration // 3600
     minutes = round(duration % 3600 / 60)
     return f'{hours} ч. {minutes} мин.'
 
+
 def is_visit_long(visit, minutes=60):
-    if get_duration(visit) > minutes*60:
+    if get_duration(visit) > minutes * 60:
         return True
+    else:
+        return False
