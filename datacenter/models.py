@@ -1,7 +1,5 @@
 from django.db import models
 import django
-from datetime import datetime
-import pytz
 
 
 class Passcard(models.Model):
@@ -34,7 +32,7 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
-    exit_time = datetime.now(pytz.timezone('Europe/Moscow')).replace(microsecond=0)
+    exit_time = django.utils.timezone.localtime().replace(microsecond=0)
 
     if visit.leaved_at:
         exit_time = django.utils.timezone.localtime(visit.leaved_at)
