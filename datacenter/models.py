@@ -46,7 +46,5 @@ def format_duration(duration):
 
 
 def is_visit_long(visit, minutes=60):
-    if get_duration(visit) > minutes * 60:
-        return True
-    else:
-        return False
+    return bool(get_duration(visit) > minutes * 60)
+
