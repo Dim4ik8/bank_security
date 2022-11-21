@@ -31,11 +31,15 @@ if __name__ == '__main__':
     #
     # for person in not_leaved:
     #     entered_time = django.utils.timezone.localtime(person.entered_at)
+    #     print(entered_time)
     #     now_time = django.utils.timezone.localtime().replace(microsecond=0)
+    #     print(now_time)
     #
     #
     # time_spent = now_time - entered_time
+    #
     # print(person.passcard)
+
     # print(f'Зашел в хранилище, время по Москве:  \n {entered_time}')
     # print(f'Находится в хранилище:  \n {time_spent}')
 

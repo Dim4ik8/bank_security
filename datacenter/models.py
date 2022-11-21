@@ -32,20 +32,15 @@ class Visit(models.Model):
 
 
 def get_duration(visit):
-    exit_time = django.utils.timezone.localtime().replace(microsecond=0)
-
-    if visit.leaved_at:
-        exit_time = django.utils.timezone.localtime(visit.leaved_at)
-
     entered_time = django.utils.timezone.localtime(visit.entered_at)
-
+    exit_time = django.utils.timezone.localtime(visit.leaved_at)
     time_spent = exit_time - entered_time
 
-    return time_spent.seconds
+    return time_spent.total_seconds()
 
 
 def format_duration(duration):
-    hours = duration // 3600
+    hours = round(duration // 3600)
     minutes = round(duration % 3600 / 60)
     return f'{hours} ч. {minutes} мин.'
 
