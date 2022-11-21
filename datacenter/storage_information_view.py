@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def storage_information_view(request):
     non_closed_visits = []
-    not_leaved = Visit.objects.filter(leaved_at=None)
+    not_leaved = Visit.objects.filter(leaved_at__isnull=True)
     for person in not_leaved:
         duration = get_duration(person)
         non_closed_visits.append(
