@@ -7,7 +7,7 @@ def storage_information_view(request):
     non_closed_visits_serialized = []
     non_closed_visits = Visit.objects.filter(leaved_at__isnull=True)
     for visit in non_closed_visits:
-        duration = get_duration(person)
+        duration = get_duration(visit)
         non_closed_visits_serialized.append(
             {
                 'who_entered': visit.passcard,
