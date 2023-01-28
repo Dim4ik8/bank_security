@@ -1,13 +1,25 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ENGINE = os.getenv('ENGINE')
+HOST = os.getenv('HOST')
+PORT = os.getenv('PORT')
+NAME = os.getenv('NAME')
+USER_ID = os.getenv('USER_ID')
+PASSWORD = os.getenv('PASSWORD')
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'checkpoint.devman.org',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': 'osim5',
+        'ENGINE': ENGINE,
+        'HOST': HOST,
+        'PORT': PORT,
+        'NAME': NAME,
+        'USER': USER_ID,
+        'PASSWORD': PASSWORD,
     }
 }
 
