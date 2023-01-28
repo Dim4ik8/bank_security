@@ -1,21 +1,29 @@
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+from environs import Env
 
-USERNAME = os.getenv('USER')
-PASSWORD = os.getenv('PASSWORD')
+env = Env()
+env.read_env()
+
+ENGINE = env('ENGINE')
+HOST = env('HOST')
+PORT = env('PORT')
+NAME = env('NAME')
+USER_ID = env('USER_ID')
+PASSWORD = env('PASSWORD')
+
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'dd',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        # 'PASSWORD': 'osim5',
+        'ENGINE': ENGINE,
+        'HOST': HOST,
+        'PORT': PORT,
+        'NAME': NAME,
+        'USER': USER_ID,
+        'PASSWORD': PASSWORD,
     }
 }
+
 
 INSTALLED_APPS = ['datacenter']
 
