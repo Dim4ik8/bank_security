@@ -5,25 +5,12 @@ from environs import Env
 env = Env()
 env.read_env()
 
-ENGINE = env('ENGINE')
-HOST = env('HOST')
-PORT = env('PORT')
-NAME = env('NAME')
-USER_ID = env('USER_ID')
-PASSWORD = env('PASSWORD')
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': ENGINE,
-        'HOST': HOST,
-        'PORT': PORT,
-        'NAME': NAME,
-        'USER': USER_ID,
-        'PASSWORD': PASSWORD,
-    }
+    'default': dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
+    ),
 }
-
 
 INSTALLED_APPS = ['datacenter']
 
