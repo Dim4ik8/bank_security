@@ -1,5 +1,6 @@
 import os
 
+import dj_database_url
 from environs import Env
 
 env = Env()
@@ -14,7 +15,7 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = env('SECRET_KEY')
 
 TIME_ZONE = 'Europe/Moscow'
 
