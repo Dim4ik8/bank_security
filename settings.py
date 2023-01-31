@@ -15,7 +15,7 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY', default='uh745gclo835cbao4aru9bvro2ihrtbvi')
 
 TIME_ZONE = 'Europe/Moscow'
 

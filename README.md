@@ -24,10 +24,9 @@ pip install -r requirements.txt
 Если у вас нет доступа к базе данных банка, вы не сможете получить доступ к этой информации. В противном случае, вам необходимо создать файл с переменными окружения `.env` и добавить в переменную DATABASE_URL свои конфиденциальные данные, как показанов примере:
 ```python
 DATABASE_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'
-SECRET_KEY='uh745gclo835cbao4aru9bvro2ihrtbvi'
-DEBUG=False
-ALLOWED_HOSTS=['.localhost', '127.0.0.1']
 ```
+В случае, если вам будет необходимо поменять настройки DEBUG, SECRET_KEY или ALLOWED_HOSTS, это делается также в файле `.env`. Первоначальные значания заданы по умолчанию и находятся в файле `settings.py`
+
 Запуск проекта осуществляется командой:
 ```python
 python manage.py runserver
